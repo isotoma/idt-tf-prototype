@@ -15,8 +15,75 @@ class App extends Component {
             {Client.activityInstanceId && 'Client'}
           </h1>
         </header>
+        <div>
+          <h2>Host Things</h2>
+          <button onClick={() => {
+            const currentActivity = Host.startActivity('demo-activity:create-list', {
+              onComplete: (data) => {
+                console.log('Host onComplete:' + data);
+              },
+              onData: (data) => {
+                console.log('Host onData:' + data);
+                if (currentActivity) {
+                  console.log('notifyClient');
+                  Host.notifyClient(currentActivity, 'test');
+                }
+              },
+              onError: (error) => {
+                console.log('Host onError:' + error);
+              },
+              launcher: new ModalLauncher(),
+              disableVersionCheck: true
+            });
+          }}>
+            New Activity in Modal
+          </button>
+          <button onClick={() => {
+            const currentActivity = Host.startActivity('demo-activity:create-list', {
+              onComplete: (data) => {
+                console.log('Host onComplete:' + data);
+              },
+              onData: (data) => {
+                console.log('Host onData:' + data);
+                if (currentActivity) {
+                  console.log('notifyClient');
+                  Host.notifyClient(currentActivity, 'test');
+                }
+              },
+              onError: (error) => {
+                console.log('Host onError:' + error);
+              },
+              launcher: new IntGelDrawerLauncher(),
+              disableVersionCheck: true
+            });
+          }}>
+            New Activity in Drawer
+          </button>
+          <button onClick={() => {
+            const currentActivity = Host.startActivity('demo-activity:create-list', {
+              onComplete: (data) => {
+                console.log('Host onComplete:' + data);
+              },
+              onData: (data) => {
+                console.log('Host onData:' + data);
+                if (currentActivity) {
+                  console.log('notifyClient');
+                  Host.notifyClient(currentActivity, 'test');
+                }
+              },
+              onError: (error) => {
+                console.log('Host onError:' + error);
+              },
+              launcher: new NewTabLauncher(),
+              disableVersionCheck: true
+            });
+          }}>
+            New Activity in New Tab
+          </button>
+        </div>
         {Client.activityInstanceId &&
           <div>
+            <h2>Client Things</h2>
             <p className="App-intro">
               <span>Trigger Messages: </span>
               <button onClick={() => Client.endActivity('TEST')}>
@@ -46,81 +113,6 @@ class App extends Component {
             </p>
           </div>
         }
-        <p>
-          <button onClick={() => {
-            const currentActivity = Host.startActivity('demo-activity:create-list', {
-              onComplete: () => {},
-              onData: (data) => {
-                console.log('Host Received Data:' + data);
-                if (currentActivity) {
-                  console.log('notifyClient');
-                  Host.notifyClient(currentActivity, 'test');
-                }
-              },
-              onError: (error) => {
-                console.log('Host received error:' + error);
-              },
-              launcher: new ModalLauncher(),
-              query: {
-                param1: 'value1',
-                param3: 'value3',
-              },
-              disableVersionCheck: true
-            });
-          }}>
-            New Activity in Modal
-          </button>
-        </p>
-        <p>
-          <button onClick={() => {
-            const currentActivity = Host.startActivity('demo-activity:create-list', {
-              onComplete: () => {},
-              onData: (data) => {
-                console.log('Host Received Data:' + data);
-                if (currentActivity) {
-                  console.log('notifyClient');
-                  Host.notifyClient(currentActivity, 'test');
-                }
-              },
-              onError: (error) => {
-                console.log('Host received error:' + error);
-              },
-              launcher: new IntGelDrawerLauncher(),
-              query: {
-                param1: 'value1',
-                param3: 'value3',
-              },
-              disableVersionCheck: true
-            });
-          }}>
-            New Activity in Drawer
-          </button>
-        </p>
-        <p>
-          <button onClick={() => {
-            const currentActivity = Host.startActivity('demo-activity:create-list', {
-              onComplete: () => {},
-              onData: (data) => {
-                console.log('Host Received Data:' + data);
-                if (currentActivity) {
-                  console.log('notifyClient');
-                  Host.notifyClient(currentActivity, 'test');
-                }
-              },
-              onError: (error) => {
-                console.log('Host received error:' + error);
-              },
-              launcher: new NewTabLauncher(),
-              query: {
-                param1: 'value1',
-                param3: 'value3',
-              },
-              disableVersionCheck: true
-            });
-          }}>
-            New Activity in New Tab
-          </button>
-        </p>
       </div>
     );
   }

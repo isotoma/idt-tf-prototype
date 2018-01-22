@@ -1,4 +1,4 @@
-import { notifyUser } from '../reducer';
+import { notifyUser, confirmation, error } from '../reducer';
 
 export default store => ({
   init: () => {},
@@ -18,7 +18,11 @@ export default store => ({
       }
   ) => {
     console.log('confirmation: ', message);
+    store.dispatch(confirmation(message));
     onConfirm();
   },
-  getErrorHandler: () => (message, type) => console.log('error: ', message, type),
+  getErrorHandler: () => (message, type) => {
+    console.log('error: ', message, type);
+    store.dispatch(error(message));
+  },
 });

@@ -19,13 +19,13 @@ if (!Host.isInitialised) {
   var manifests = [
     {
         name: 'demo-activity',
-        rootUrl: 'http://127.0.0.1:3001/',
+        rootUrl: window.location.href,
         accessCheckTemplate: '',
         environment: 'int',
         activities: [{
             name: 'create-list',
             friendlyName: 'Create list TADA',
-            pathTemplate: 'create-list.html',
+            pathTemplate: 'client', // No current routing so doesn't really matter
             intentFilters: [
                 {
                     actions: ['create'],
@@ -44,7 +44,7 @@ if (!Host.isInitialised) {
   });
 }
 
-const createListIntent = Client.createIntent('create', 'list');
+const createListIntent = Client.createIntent('create', 'list'); // matches manifest from above.
 Client.init({
   providedIntents: [
     createListIntent,
