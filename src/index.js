@@ -19,7 +19,7 @@ if (!Host.isInitialised) {
   var manifests = [
     {
         name: 'demo-activity',
-        rootUrl: 'http://10.0.0.86:3001/',
+        rootUrl: 'http://127.0.0.1:3001/',
         accessCheckTemplate: '',
         environment: 'int',
         activities: [{
