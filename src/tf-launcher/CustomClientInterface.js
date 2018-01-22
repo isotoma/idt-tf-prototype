@@ -1,8 +1,11 @@
-export default {
+import { notifyUser } from '../reducer';
+
+export default store => ({
   init: () => {},
   setActivityName: () => {},
   notifyUser: (message, type, actions = [], dismissible = true, dismissAfterAction = true) => {
     console.log('notifyUser: ', message, type, actions, dismissible, dismissAfterAction);
+    store.dispatch(notifyUser(message));
   },
   confirmation: (
       message,
@@ -18,4 +21,4 @@ export default {
     onConfirm();
   },
   getErrorHandler: () => (message, type) => console.log('error: ', message, type),
-}
+});
