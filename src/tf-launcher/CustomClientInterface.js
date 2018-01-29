@@ -25,4 +25,7 @@ export default store => ({
     console.log('error: ', message, type);
     store.dispatch(error(message));
   },
+  getCloseData: () => {
+    return 'Some DATA';
+  }
 });
