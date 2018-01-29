@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { Client, Host } from '@bbc/tools-framework';
+import { Host } from '@bbc/tools-framework';
 import CustomClientInterface from './tf-launcher/CustomClientInterface';
+import Client from './tf-launcher/CustomClient';
 
 import './index.css';
 import App from './App';
@@ -43,7 +44,7 @@ if (!Host.isInitialised) {
       customManifests: manifests,
   });
 }
-
+console.log(Client);
 const createListIntent = Client.createIntent('create', 'list'); // matches manifest from above.
 Client.init({
   providedIntents: [

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Client, Host, ModalLauncher, IntGelDrawerLauncher, NewTabLauncher } from '@bbc/tools-framework';
+import { Host, ModalLauncher, IntGelDrawerLauncher, NewTabLauncher } from '@bbc/tools-framework';
+import Client from './tf-launcher/CustomClient';
 
 import logo from './logo.svg';
 import './App.css';
